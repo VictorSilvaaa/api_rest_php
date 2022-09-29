@@ -11,11 +11,13 @@
             $method = strtolower($_SERVER['REQUEST_METHOD']);
             
             try {
-                $response = call_user_func_array(array(new $service, $method), array($url));
+                $response = call_user_func(array(new $service, $method), $url[2]);
 
-                echo  array('status' => 'sucess', 'data' => $response);
+                echo  json_encode(array('status' => 'sucess', 'data' => $response),JSON_UNESCAPED_UNICODE);
+                exit;
             } catch (\Exception $e) {
-                
+                echo  json_encode(array('status' => 'error', 'data' => $e->getMessage()),JSON_UNESCAPED_UNICODE);
+                exit;
             }
         }
     }

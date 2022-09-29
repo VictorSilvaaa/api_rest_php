@@ -6,10 +6,10 @@ use App\Models\User;
 class UserService
 {
     public function get($id = null){
-        if($id[2]){
+        if($id){
             return User::select($id);
         }else{
-            //return User::selectAll();
+            return User::selectAll();
         }
     }
     public function post(){
