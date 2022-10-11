@@ -13,7 +13,7 @@ class UserService
         }
     }
     public function post(){
-        
+        return $_POST;
     }
     public function update(){
         

@@ -34,4 +34,18 @@ class User
         }
 
     }
+
+    public static function insert(){
+        $connPdo = new \PDO(DBDRIVE.': host='.DBHOST.'; dbname='.DBNAME, DBUSER, DBPASS);
+    
+        $sql = "INSERT INTO users (name, idade) VALUES ('teste1', '1')";
+        $stmt = $connPdo->prepare($sql);
+        $stmt->execute();
+        if($stmt->rowCount() > 0){
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        }else{
+            throw new \Exception("Não foi possivel inserir");
+        }
+
+    }
 }
